@@ -5,6 +5,7 @@ import com.jmu.bibasedmanage.pojo.BmStudent;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 public interface BmStudentDao {
@@ -20,5 +21,5 @@ public interface BmStudentDao {
 
     int updateByPrimaryKey(BmStudent record);
 
-    List<BmStudent> selectByPage(PageBounds pageBounds);
+    List<BmStudent> selectByPage(PageBounds pageBounds, Map<String, Object> map);
 }

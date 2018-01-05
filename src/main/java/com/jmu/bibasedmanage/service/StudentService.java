@@ -23,4 +23,6 @@ public interface StudentService {
     void update(BmStudent bmStudent);
 
     void delete(String id);
+
+    BmStudent getById(String id);
 }

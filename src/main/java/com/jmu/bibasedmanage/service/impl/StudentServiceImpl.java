@@ -28,7 +28,7 @@ public class StudentServiceImpl implements StudentService{
 
     public Page<BmStudent> list(Map map, Page<BmStudent> page) {
         PageBounds pageBounds = new PageBounds(page.getPageNo(), page.getPageSize());
-        List<BmStudent> students = bmStudentDao.selectByPage(pageBounds);
+        List<BmStudent> students = bmStudentDao.selectByPage(pageBounds, map);
         page.setResult(students);
         page.setTotalCountByPageList((PageList) students);
         return page;
@@ -52,5 +52,9 @@ public class StudentServiceImpl implements StudentService{
         bmStudent.setId(id);
         bmStudent.setRecordStatus(CommonConst.RECORD_STATUS_DELETED);
         bmStudentDao.updateByPrimaryKeySelective(bmStudent);
+    }
+
+    public BmStudent getById(String id) {
+        return bmStudentDao.selectByPrimaryKey(id);
     }
 }

@@ -10,8 +10,40 @@
 	</head>
 
 	<body>
+
 		<div class="admin-main">
 
+			<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+				<ul class="layui-tab-title">
+					<li class="layui-this">网站设置</li>
+					<li><a href="${base}/student/add.html">用户管理</a></li>
+					<li>权限分配</li>
+					<li>商品管理</li>
+					<li>订单管理</li>
+				</ul>
+				<div class="layui-tab-content"></div>
+			</div>
+			<blockquote class="layui-elem-quote">
+				<!--<button type="button" class="layui-btn layui-btn-small" id="getAll"><i class="fa fa-plus" aria-hidden="true"></i> 添加</button>-->
+				<div class="layui-inline">
+					<form class="layui-form">
+						<div class="layui-form-item" style="margin:0;">
+							<label class="layui-form-label">名称</label>
+							<div class="layui-input-inline">
+								<input type="text" name="name" placeholder="支持模糊查询.." autocomplete="off" class="layui-input">
+							</div>
+							<div class="layui-form-mid layui-word-aux" style="padding:0;">
+								<button lay-filter="search" class="layui-btn" lay-submit><i class="fa fa-search" aria-hidden="true"></i> 查询</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="layui-inline" style="float: right">
+					<a href="javascript:;" class="layui-btn layui-btn-small" >
+						<i class="layui-icon">&#xe608;</i> 添加信息
+					</a>
+				</div>
+			</blockquote>
 			<blockquote class="layui-elem-quote">
 				<a href="javascript:;" class="layui-btn layui-btn-small" id="add">
 					<i class="layui-icon">&#xe608;</i> 添加信息
@@ -26,6 +58,7 @@
 					<i class="layui-icon">&#xe615;</i> 搜索
 				</a>
 			</blockquote>
+
 			<fieldset class="layui-elem-field">
 				<legend>数据列表</legend>
 				<div class="layui-field-box layui-form">

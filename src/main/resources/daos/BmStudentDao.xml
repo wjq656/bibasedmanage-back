@@ -256,10 +256,14 @@
       comment_teacher = #{commentTeacher,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPage" resultMap="BaseResultMap">
+  <select id="selectByPage" resultMap="BaseResultMap" parameterType="java.util.Map">
     select
     <include refid="Base_Column_List" />
     from bm_student
-    order by create_time
+    where 1=1
+    <if test="keyword != null and keyword != ''">
+      and student_id like concat("%", #{keyword}, "%")
+    </if>
+    order by create_time desc
   </select>
 </mapper>

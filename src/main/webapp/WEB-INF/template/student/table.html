@@ -17,29 +17,41 @@
 </head>
 
 <body>
-<div class="admin-main">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">学生信息列表</li>
+            <li><a href="${base}/student/add.html">添加学生信息</a></li>
+        </ul>
+        <div class="layui-tab-content"></div>
+    </div>
+    <div class="admin-main">
 
     <blockquote class="layui-elem-quote">
-        <a href="${base}/student/add.html" class="layui-btn layui-btn-small" id="add">
-            <i class="layui-icon">&#xe608;</i> 添加信息
-        </a>
-        <a href="#" class="layui-btn layui-btn-small" id="import">
-            <i class="layui-icon">&#xe608;</i> 导入信息
-        </a>
-        <a href="#" class="layui-btn layui-btn-small">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i> 导出信息
-        </a>
-        <a href="javascript:;" class="layui-btn layui-btn-small" id="search">
-            <i class="layui-icon">&#xe615;</i> 搜索
-        </a>
+        <div class="layui-inline">
+            <form class="layui-form" action="" style="height: 10px">
+                <div class="layui-form-item" style="margin:0;">
+                    <label class="layui-form-label">关键词：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" placeholder="输入关键词" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux" style="padding:0;">
+                        <button lay-filter="search" class="layui-btn" lay-submit><i class="fa fa-search" aria-hidden="true"></i> 查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="layui-inline" style="float: right">
+            <a href="#" class="layui-btn layui-btn-small" id="import" style="float: right">
+                <i class="layui-icon">&#xe608;</i> 导入信息
+            </a>
+        </div>
     </blockquote>
     <fieldset class="layui-elem-field">
-        <legend>数据列表</legend>
+        <!--<legend>数据列表</legend>-->
         <div class="layui-field-box layui-form">
             <table class="layui-table admin-table">
                 <thead>
                 <tr>
-                    <th style="width: 30px;"><input type="checkbox" lay-filter="allselector" lay-skin="primary"></th>
                     <th>学号</th>
                     <th>年级</th>
                     <th>学院</th>
@@ -68,7 +80,6 @@
 <script type="text/html" id="tpl">
     {{# layui.each(d.result.result, function(index, item){ }}
     <tr>
-        <td><input type="checkbox" lay-skin="primary"></td>
         <td>{{ item.studentId||'' }}</td>
         <td>{{ item.grade||'' }}</td>
         <td>{{ item.college||'' }}</td>
@@ -88,7 +99,6 @@
             {{# } }}
         </td>
         <td>
-            <a href="/detail-1" target="_blank" class="layui-btn layui-btn-normal layui-btn-mini">预览</a>
             <a href="javascript:;" data-id="{{ item.id }}" data-opt="edit" class="layui-btn layui-btn-mini">编辑</a>
             <a href="javascript:;" data-id="{{ item.id }}" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
         </td>

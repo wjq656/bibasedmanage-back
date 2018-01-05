@@ -158,6 +158,16 @@
       <artifactId>commons-codec</artifactId>
       <version>1.9</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.7</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.1</version>
+    </dependency>
     <!-- druid连接池 -->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -239,6 +249,12 @@
       <version>1.2.5</version>
     </dependency>
 
+    <!--jxl EXCEL表格批量导入-->
+    <dependency>
+      <groupId>net.sourceforge.jexcelapi</groupId>
+      <artifactId>jxl</artifactId>
+      <version>2.6.12</version>
+    </dependency>
   </dependencies>
   <build>
       <plugins>

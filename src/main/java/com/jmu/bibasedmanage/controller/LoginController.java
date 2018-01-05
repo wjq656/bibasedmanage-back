@@ -1,5 +1,6 @@
 package com.jmu.bibasedmanage.controller;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -33,13 +34,9 @@ public class LoginController {
             subject.login(token);
         }catch (AuthenticationException ae){
             log.debug("登录失败：{}",ae.getMessage());
-            return "/loginFail.html";
+            return "login.html";
         }
-        return "/loginSuccess.html";
+        return "redirect:/index";
     }
 
-    @RequestMapping("logout")
-    public String logout() {
-        return "redirect:/login";
-    }
 }

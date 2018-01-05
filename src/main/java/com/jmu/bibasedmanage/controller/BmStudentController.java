@@ -25,7 +25,7 @@ public class BmStudentController {
 
     @RequestMapping(value = "/list.html", method = RequestMethod.GET)
     public ModelAndView list(){
-        return new ModelAndView("");
+        return new ModelAndView("student/table.html");
     }
 
     /**
@@ -42,7 +42,13 @@ public class BmStudentController {
 
     @RequestMapping(value = "/add.html", method = RequestMethod.GET)
     public ModelAndView add(){
-        return new ModelAndView("");
+        return new ModelAndView("student/form_add.html");
+    }
+
+    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResponse get(String id){
+        return ResponseUtil.success(studentService.getById(id));
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -52,8 +58,9 @@ public class BmStudentController {
         return ResponseUtil.success();
     }
     @RequestMapping(value = "/update.html",method = RequestMethod.GET)
-    public ModelAndView update(){
-        return new ModelAndView("");
+    public ModelAndView update(String id){
+        return new ModelAndView("/student/form_edit.html")
+                .addObject("id", id);
     }
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
@@ -67,5 +74,9 @@ public class BmStudentController {
         return ResponseUtil.success();
     }
 
+    @RequestMapping(value = "excel-upload.html")
+    public ModelAndView excelUpload(){
+        return new ModelAndView("/student/excel_upload.html");
+    }
 
 }
