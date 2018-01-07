@@ -51,7 +51,7 @@
         <div class="layui-field-box layui-form">
             <table class="layui-table admin-table">
                 <thead>
-                <tr>
+                <tr >
                     <th>角色名称</th>
                     <th>备注</th>
                     <th>状态</th>
@@ -72,7 +72,7 @@
 <!--模板-->
 <script type="text/html" id="tpl">
     {{# layui.each(d.result.result, function(index, item){ }}
-    <tr>
+    <tr id="tr-{{ item.id }}">
         <td>{{ item.name||'' }}</td>
         <td>{{ item.remark||'' }}</td>
         <td>

@@ -15,7 +15,7 @@ public interface RoleService {
     BmRole selectById(String roleId);
     Page<BmRole> list(Map map, Page<BmRole> page);
 
-   // String add(BmRole bmRole);
+    String add(BmRole bmRole);
 
     void update(BmRole bmRole);
 

@@ -55,12 +55,12 @@ public class BmRoleController {
         return ResponseUtil.success(roleService.selectById(id));
     }
 
-  /*  @RequestMapping(value = "/add", method = RequestMethod.POST)
+   @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public JsonResponse addData(BmRole bmRole){
         roleService.add(bmRole);
         return ResponseUtil.success();
-    }*/
+    }
     @RequestMapping(value = "/update.html",method = RequestMethod.GET)
     public ModelAndView update(String id){
         return new ModelAndView("/role/form_edit.html")

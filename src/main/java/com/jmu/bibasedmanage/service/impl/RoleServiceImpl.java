@@ -35,22 +35,19 @@ public class RoleServiceImpl implements RoleService{
         return page;
     }
 
-  /*  public String add(BmRole bmRole) {
+   public String add(BmRole bmRole) {
         String id = UUIDUtils.generator();
         bmRole.setId(id);
-        bmRole.setCreateTime(new Date());
-        bmRoleDao.insert(bmRole);
+        bmRoleDao.insertSelective(bmRole);
         return id;
-    }*/
+    }
 
     public void update(BmRole bmRole) {
         bmRoleDao.updateByPrimaryKeySelective(bmRole);
     }
 
     public void delete(String id) {
-        BmRole bmRole = new BmRole();
-        bmRole.setId(id);
-        bmRoleDao.updateByPrimaryKeySelective(bmRole);
+        bmRoleDao.deleteByPrimaryKey(id);
     }
 
     public BmRole selectById(String roleId) {

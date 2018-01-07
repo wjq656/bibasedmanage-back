@@ -40,7 +40,27 @@ function Table(_data){
                     var $that = $(this);
                     $that.children('td:last-child').children('a[data-opt=del]').on('click', function() {
                         // layer.msg($(this).data('name'));
-                        console.log($(this).data('id'));
+                        role_id=$(this).data('id');
+                        layer.msg('你确定删除么？', {
+                            time: 0 //不自动关闭
+                            ,btn: ['确定', '取消']
+                            ,yes: function(data){
+                                $.post(Bm["path"]+"/role/delete", {'id':role_id}, function(ret){
+                                    if(ret.status == "SUCCESS"){
+
+                                        //因为这里面的不知道为什么执行不了  所以只能吧页面的删除操作放在外面了,错误是因为明明删除了，却显示路径不再
+                                    }
+                                });
+
+                                setTimeout(function () {
+                                    $("#tr-"+role_id).remove();
+                                    layer.msg("删除成功",{time:1000});
+                                },1000);
+                                //关闭弹窗
+                                layer.close(data);
+                            }
+                        });
+
                     });
 
                 });
