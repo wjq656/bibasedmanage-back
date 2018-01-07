@@ -1,31 +1,35 @@
 package com.jmu.bibasedmanage.controller;
 
+import com.jmu.bibasedmanage.pojo.BmRole;
 import com.jmu.bibasedmanage.pojo.BmStudent;
+import com.jmu.bibasedmanage.service.RoleService;
 import com.jmu.bibasedmanage.service.StudentService;
 import com.jmu.bibasedmanage.util.ResponseUtil;
 import com.jmu.bibasedmanage.vo.JsonResponse;
 import com.jmu.bibasedmanage.vo.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
+import javax.management.relation.Role;
 import java.util.Map;
 
 /**
- * Created by ljc on 2017/12/18.
+ * Created by WJQ on 2018/1/7.
  */
 @Controller
-@RequestMapping("/student")
-public class BmStudentController {
+@RequestMapping("/role")
+public class BmRoleController {
 
     @Autowired
-    private StudentService studentService;
-
+    private RoleService roleService;
     @RequestMapping(value = "/list.html", method = RequestMethod.GET)
     public ModelAndView list(){
-        return new ModelAndView("student/table.html");
+        return new ModelAndView("role/table.html");
     }
 
     /**
@@ -36,47 +40,42 @@ public class BmStudentController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResponse listData(@RequestParam Map<String, Object> map, Page<BmStudent> page){
-        return ResponseUtil.success(studentService.list(map, page));
+    public JsonResponse listData(@RequestParam Map<String, Object> map, Page<BmRole> page){
+        return ResponseUtil.success(roleService.list(map, page));
     }
 
     @RequestMapping(value = "/add.html", method = RequestMethod.GET)
     public ModelAndView add(){
-        return new ModelAndView("student/form_add.html");
+        return new ModelAndView("role/form_add.html");
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.POST)
     @ResponseBody
     public JsonResponse get(String id){
-        return ResponseUtil.success(studentService.getById(id));
+        return ResponseUtil.success(roleService.selectById(id));
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+  /*  @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResponse addData(BmStudent bmStudent){
-        studentService.add(bmStudent);
+    public JsonResponse addData(BmRole bmRole){
+        roleService.add(bmRole);
         return ResponseUtil.success();
-    }
+    }*/
     @RequestMapping(value = "/update.html",method = RequestMethod.GET)
     public ModelAndView update(String id){
-        return new ModelAndView("/student/form_edit.html")
+        return new ModelAndView("/role/form_edit.html")
                 .addObject("id", id);
     }
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
-    public JsonResponse updateData(BmStudent bmStudent){
-        studentService.update(bmStudent);
+    public JsonResponse updateData(BmRole bmRole){
+        roleService.update(bmRole);
         return ResponseUtil.success();
     }
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     public JsonResponse delete(String id){
-        studentService.delete(id);
+        roleService.delete(id);
         return ResponseUtil.success();
-    }
-
-    @RequestMapping(value = "excel-upload.html")
-    public ModelAndView excelUpload(){
-        return new ModelAndView("/student/excel_upload.html");
     }
 
 }

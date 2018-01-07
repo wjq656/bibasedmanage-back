@@ -40,7 +40,7 @@
                 /login.html = anon
                 /login = anon
                 /user.jsp = perms[student:*]
-                /student/** = roles[admin]
+               <!-- /student/** = roles[admin]-->
                 <!--/** = authc, roles[admin]-->
             </value>
         </property>

@@ -13,7 +13,7 @@ function Table(_data){
             form = layui.form();
         paging.init({
             openWait: true,
-            url: Bm["path"] + '/student/list', //地址
+            url: Bm["path"] + '/role/list', //地址
             elem: '#content', //内容容器
             params: _data,
             type: 'POST',
@@ -31,7 +31,7 @@ function Table(_data){
                 $('#content').children('tr').each(function() {
                     var $that = $(this);
                     $that.children('td:last-child').children('a[data-opt=edit]').on('click', function() {
-                        window.location.href = Bm["path"] + "/student/update.html?id=" + $(this).data('id');
+                        window.location.href = Bm["path"] + "/role/update.html?id=" + $(this).data('id');
                     });
 
                 });
@@ -57,7 +57,7 @@ function Table(_data){
                 title: '导入信息',
                 maxmin: false,
                 type: 2,
-                content: Bm["path"] + '/student/excel-upload.html',
+                content: Bm["path"] + '/role/excel-upload.html',
                 area: ['300px', '200px']
             });
         });
