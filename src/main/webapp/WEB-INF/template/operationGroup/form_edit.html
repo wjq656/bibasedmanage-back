@@ -20,7 +20,7 @@
     <ul class="layui-tab-title">
         <li ><a href="${base}/operationGroup/list.html">操作组列表</a></li>
         <li><a href="${base}/operationGroup/add.html">添加操作组</a></li>
-        <li class="layui-this">修改操作组</li>
+        <li class="layui-this">修改角色</li>
     </ul>
     <div class="layui-tab-content"></div>
 </div>
@@ -63,9 +63,9 @@
 
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">排序值</label>
+            <label class="layui-form-label">操作组排序</label>
             <div class="layui-input-inline">
-                <input type="text" name="ln" value="{{d.ln}}" lay-verify="required" autocomplete="off" placeholder="请输入操作组" class="layui-input">
+                <input type="text" name="ln" value="{{d.ln}}" lay-verify="required" autocomplete="off" placeholder="请输入排序值" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
