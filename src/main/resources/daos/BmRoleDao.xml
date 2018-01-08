@@ -86,7 +86,7 @@
     from bm_role
     where 1=1
     <if test="keyword != null and keyword != ''">
-      and name like concat("%", #{keyword}, "%")
+      and role_id like concat("%", #{keyword}, "%")
     </if>
   </select>
 </mapper>
