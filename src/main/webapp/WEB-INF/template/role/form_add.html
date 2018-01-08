@@ -103,6 +103,7 @@
 
 //				//监听提交
         form.on('submit(sub)', function(data) {
+            alert(JSON.stringify(data))
             $.post(Bm["path"]+"/role/add", data.field, function(ret){
                 if(ret.status == "SUCCESS"){
                     layer.alert("提交成功");

@@ -47,11 +47,9 @@ function Table(_data){
                             ,yes: function(data){
                                 $.post(Bm["path"]+"/role/delete", {'id':role_id}, function(ret){
                                     if(ret.status == "SUCCESS"){
-
-                                        //因为这里面的不知道为什么执行不了  所以只能吧页面的删除操作放在外面了,错误是因为明明删除了，却显示路径不再
+                                        //因为这里面的不知道为什么执行不了  所以只能吧页面的删除操作放在外面了,
                                     }
                                 });
-
                                 setTimeout(function () {
                                     $("#tr-"+role_id).remove();
                                     layer.msg("删除成功",{time:1000});
