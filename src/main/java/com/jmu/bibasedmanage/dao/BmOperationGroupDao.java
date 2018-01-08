@@ -22,4 +22,5 @@ public interface BmOperationGroupDao {
 
     int updateByPrimaryKey(BmOperationGroup record);
     List<BmOperationGroup> selectByPage(PageBounds pageBounds, Map<String, Object> map);
+    List<BmOperationGroup> selectAll();
 }

@@ -91,6 +91,12 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List" />
+    from bm_operation_group
+    where status ="ENABLE"
+  </select>
   <select id="selectByPage" resultMap="BaseResultMap" parameterType="java.util.Map">
     select
     <include refid="Base_Column_List" />

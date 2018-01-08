@@ -52,13 +52,13 @@
             <table class="layui-table admin-table">
                 <thead>
                 <tr >
+                    <th>操作名称</th>
+                    <th>入口链接</th>
+                    <th>操作排序值</th>
+                    <th>操作备注</th>
                     <th>操作组名称</th>
                     <th>操作组备注</th>
                     <th>操作组排序值</th>
-                    <th>操作名称</th>
-                    <th>入口链接</th>
-                    <th>操作备注</th>
-                    <th>操作排序值</th>
                     <th>状态</th>
                     <th>操作</th>
                 </tr>
@@ -78,13 +78,13 @@
 <script type="text/html" id="tpl">
     {{# layui.each(d.result.result, function(index, item){ }}
     <tr id="tr-{{ item.id }}">
-        <td>{{ item.gname||'' }}</td>
-        <td>{{ item.gremark||'' }}</td>
-        <td>{{ item.gln||'' }}</td>
         <td>{{ item.name||'' }}</td>
         <td>{{ item.enterUrl||'' }}</td>
         <td>{{ item.ln||'' }}</td>
         <td>{{ item.remark||'' }}</td>
+        <td>{{ item.gname||'' }}</td>
+        <td>{{ item.gremark||'' }}</td>
+        <td>{{ item.gln||'' }}</td>
         <td>
             {{# if(item.status != null){ }}
                 {{ item.status=="ENABLE" ? "启用" : "停用" }}

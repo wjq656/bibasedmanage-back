@@ -43,6 +43,10 @@ public class OperationGroupServiceImpl implements OperationGroupService {
         bmoperationGroupDao.updateByPrimaryKeySelective(bmoperationGroup);
     }
 
+    public List<BmOperationGroup> selectAll() {
+        return bmoperationGroupDao.selectAll();
+    }
+
     public void delete(String id) {
         bmoperationGroupDao.deleteByPrimaryKey(id);
     }

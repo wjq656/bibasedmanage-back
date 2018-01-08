@@ -4,6 +4,7 @@ import com.jmu.bibasedmanage.pojo.BmOperationGroup;
 import com.jmu.bibasedmanage.pojo.BmRole;
 import com.jmu.bibasedmanage.vo.Page;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,6 +18,6 @@ public interface OperationGroupService {
     String add(BmOperationGroup bmOperationGroup);
 
     void update(BmOperationGroup bmOperationGroup);
-
+    List<BmOperationGroup> selectAll();
     void delete(String id);
 }

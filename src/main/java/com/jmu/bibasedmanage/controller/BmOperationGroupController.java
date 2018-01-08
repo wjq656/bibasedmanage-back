@@ -48,6 +48,11 @@ public class BmOperationGroupController {
         return new ModelAndView("operationGroup/form_add.html");
     }
 
+    @RequestMapping(value = "/getAll", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResponse getAll(){
+        return ResponseUtil.success(operationGroupService.selectAll());
+    }
     @RequestMapping(value = "/get", method = RequestMethod.POST)
     @ResponseBody
     public JsonResponse get(String id){

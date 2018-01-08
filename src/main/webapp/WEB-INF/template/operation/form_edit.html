@@ -18,8 +18,8 @@
 <body>
 <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
     <ul class="layui-tab-title">
-        <li ><a href="${base}/operationGroup/list.html">操作列表</a></li>
-        <li><a href="${base}/operationGroup/add.html">添加操作</a></li>
+        <li ><a href="${base}/operation/list.html">操作列表</a></li>
+        <li><a href="${base}/operation/add.html">添加操作</a></li>
         <li class="layui-this">修改操作</li>
     </ul>
     <div class="layui-tab-content"></div>
@@ -47,9 +47,23 @@
     <input type="hidden" name="id" value="{{d.id}}">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">操作组名</label>
+            <label class="layui-form-label">操作名</label>
             <div class="layui-input-inline">
-                <input type="text" name="name" value="{{d.name}}" lay-verify="required" autocomplete="off" placeholder="请输入操作组名" class="layui-input">
+                <input type="text" name="name" value="{{d.name}}" lay-verify="required" autocomplete="off" placeholder="请输入操作名" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">入口链接</label>
+            <div class="layui-input-inline">
+                <input type="text" name="enterUrl" value="{{d.enterUrl}}" lay-verify="required" autocomplete="off" placeholder="请输入入口链接" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">排序值</label>
+            <div class="layui-input-inline">
+                <input type="text" name="ln" value="{{d.ln}}" lay-verify="required" autocomplete="off" placeholder="请输入操作排序值" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
@@ -60,12 +74,12 @@
         </div>
     </div>
 
-
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">操作组排序</label>
+            <label class="layui-form-label">操作组</label>
             <div class="layui-input-inline">
-                <input type="text" name="ln" value="{{d.ln}}" lay-verify="required" autocomplete="off" placeholder="请输入排序值" class="layui-input">
+                <select name="operationGroupId" id="operationGroupId" lay-filter="operationGroupId">
+                </select>
             </div>
         </div>
         <div class="layui-inline">
@@ -92,7 +106,7 @@
             laytpl = layui.laytpl,
             $ = layui.jquery;
 
-        $.post(Bm["path"] + "/operationGroup/get", {id : "${id}"}, function(ret){
+        $.post(Bm["path"] + "/operation/get", {id : "${id}"}, function(ret){
             if(ret.status == "SUCCESS"){
                 var _data = ret.result;
                 var getTpl = tpl.innerHTML,
@@ -104,7 +118,31 @@
                 form.render();
             }
         });
+        $.post(Bm["path"] + "/operationGroup/getAll", {id : "111"}, function(ret){
+            if(ret.status == "SUCCESS"){
+               // ; alert(JSON.stringify())
+                for(var i=0;i<ret.result.length;i++){
+                    $("#operationGroupId").append('<option value="'+ret.result[i].id+'" id="'+ret.result[i].id+'">'+ret.result[i].name+'</option>')
 
+                }
+               /* $ ("#operationGroupId option" ). each( function () {
+                    alert (1);
+                   /if($(this).text()=='数码产品'){
+                        $(this).attr("selected","selected");
+                        alert("成功");
+                        return false;
+                    }
+                })*/
+                /* var _data = ret.result;
+                 var getTpl = tpl.innerHTML,
+                     view = document.getElementById('content');
+                 laytpl(getTpl).render(_data, function(html){
+                     view.innerHTML = html;
+                 });*/
+                //select下拉框出不来时执行
+                form.render();
+            }
+        });
         //自定义验证规则
   /*      form.verify({
             title: function(value) {
@@ -120,11 +158,11 @@
 
 //				//监听提交
         form.on('submit(sub)', function(data) {
-            $.post(Bm["path"]+"/operationGroup/update", data.field, function(ret){
+            $.post(Bm["path"]+"/operation/update", data.field, function(ret){
                 if(ret.status == "SUCCESS"){
                     layer.alert("提交成功");
                     setTimeout(function () {
-                        window.location.href = Bm["path"] + "/operationGroup/list.html";
+                        window.location.href = Bm["path"] + "/operation/list.html";
                     },2000);
                 }
             });
