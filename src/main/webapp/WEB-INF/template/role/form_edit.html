@@ -127,19 +127,13 @@
         });
         $.post(Bm["path"] + "/roleOperation/get-all-roleId", {id : "${id}"}, function(ret){
             if(ret.status == "SUCCESS"){
-                 alert(JSON.stringify(ret.result[key].roleId))
                 $(".operation").each(function(){
-
                     for(var key in ret.result){
-                    alert(ret.result[key].roleId)
-                        if($(this).val()==ret.result[key].roleId){
-                            $(this).attr("checked","checked");
+                            if($(this).val()==ret.result[key].operationId){
+                                $(this).attr("checked","checked");
                         }
-
                     }
                 })
-               // if($(this).val()==ret.)
-             //
                 form.render();
             }
         });
