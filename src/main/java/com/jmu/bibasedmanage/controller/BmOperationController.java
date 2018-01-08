@@ -56,6 +56,11 @@ public class BmOperationController {
         operationService.add(bmOperation);
         return ResponseUtil.success();
     }
+    @RequestMapping(value = "/get-all", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResponse getAll(){
+        return ResponseUtil.success(operationService.selectAll());
+    }
     @RequestMapping(value = "/update.html",method = RequestMethod.GET)
     public ModelAndView update(String id){
         return new ModelAndView("/operation/form_edit.html")

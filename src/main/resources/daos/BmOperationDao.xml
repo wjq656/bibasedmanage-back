@@ -26,6 +26,10 @@
     id, operation_group_id, name, enter_url, status, ln, remark
   </sql>
 
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select  <include refid="Base_Column_List" />
+    from bm_operation  where status ="ENABLE"
+  </select>
  <select id="selectByPage" resultMap="Union_BaseResultMap" parameterType="java.util.Map">
   select  bm_operation.`name` ,bm_operation.`status`,bm_operation.remark,bm_operation.operation_group_id,bm_operation.ln,bm_operation.id,bm_operation.enter_url,bm_operation_group.name as gname,bm_operation_group.remark as gremark,bm_operation_group.ln as gln
   from bm_operation LEFT JOIN bm_operation_group ON bm_operation.operation_group_id = bm_operation_group.id

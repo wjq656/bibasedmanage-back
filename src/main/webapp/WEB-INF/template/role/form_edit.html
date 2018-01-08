@@ -59,7 +59,12 @@
             </div>
         </div>
     </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">操作</label>
+        <div class="layui-input-block" id="operationId">
 
+        </div>
+    </div>
 
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -111,7 +116,33 @@
                 layedit.sync(editIndex);
             }
         });*/
+        $.post(Bm["path"] + "/operation/get-all", {id : "111"}, function(ret){
+            if(ret.status == "SUCCESS"){
+                //  alert(JSON.stringify(ret))
+                for(var i=0;i<ret.result.length;i++){
+                    $("#operationId").append('<input type="checkbox" class="operation" name="operation'+i+'" value="'+ret.result[i].id+'" title="'+ret.result[i].name+'">')
+                }
+                form.render();
+            }
+        });
+        $.post(Bm["path"] + "/roleOperation/get-all-roleId", {id : "${id}"}, function(ret){
+            if(ret.status == "SUCCESS"){
+                 alert(JSON.stringify(ret.result[key].roleId))
+                $(".operation").each(function(){
 
+                    for(var key in ret.result){
+                    alert(ret.result[key].roleId)
+                        if($(this).val()==ret.result[key].roleId){
+                            $(this).attr("checked","checked");
+                        }
+
+                    }
+                })
+               // if($(this).val()==ret.)
+             //
+                form.render();
+            }
+        });
 //				//监听提交
         form.on('submit(sub)', function(data) {
             $.post(Bm["path"]+"/role/update", data.field, function(ret){

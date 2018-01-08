@@ -27,4 +27,6 @@ public interface BmOperationDao {
     List<BmOperation> selectByRoleId(String roleId);
     List<Map<String,Object>> selectByPage(PageBounds pageBounds, Map<String, Object> map);
     List<BmOperation> selectByOperationId(String roleId);
+    List<BmOperation> selectAll();
+
 }

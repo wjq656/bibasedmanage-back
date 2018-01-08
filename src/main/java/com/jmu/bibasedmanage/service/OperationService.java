@@ -26,4 +26,6 @@ public interface OperationService {
     void update(BmOperation bmOperation);
 
     void delete(String id);
+
+    List<BmOperation> selectAll();
 }

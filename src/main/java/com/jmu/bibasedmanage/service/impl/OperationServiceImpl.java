@@ -47,6 +47,10 @@ public class OperationServiceImpl implements OperationService{
         bmOperationDao.deleteByPrimaryKey(id);
     }
 
+    public List<BmOperation> selectAll() {
+        return bmOperationDao.selectAll();
+    }
+
     public BmOperation selectById(String bmOperationId) {
         return bmOperationDao.selectByPrimaryKey(bmOperationId);
     }

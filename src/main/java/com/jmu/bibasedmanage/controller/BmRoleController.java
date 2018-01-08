@@ -1,7 +1,10 @@
 package com.jmu.bibasedmanage.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.jmu.bibasedmanage.dao.BmRoleOperationDao;
 import com.jmu.bibasedmanage.pojo.BmRole;
 import com.jmu.bibasedmanage.pojo.BmStudent;
+import com.jmu.bibasedmanage.service.RoleOperationService;
 import com.jmu.bibasedmanage.service.RoleService;
 import com.jmu.bibasedmanage.service.StudentService;
 import com.jmu.bibasedmanage.util.ResponseUtil;
@@ -27,6 +30,9 @@ public class BmRoleController {
 
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private RoleOperationService roleOperationService;
+
     @RequestMapping(value = "/list.html", method = RequestMethod.GET)
     public ModelAndView list(){
         return new ModelAndView("role/table.html");
@@ -57,8 +63,9 @@ public class BmRoleController {
 
    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResponse addData(BmRole bmRole){
-        roleService.add(bmRole);
+    public JsonResponse addData(BmRole bmRole,@RequestParam Map<String, Object> map){
+    //   roleOperationService.insertList(map);
+        roleService.add(bmRole,map);
         return ResponseUtil.success();
     }
     @RequestMapping(value = "/update.html",method = RequestMethod.GET)
@@ -68,8 +75,8 @@ public class BmRoleController {
     }
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
-    public JsonResponse updateData(BmRole bmRole){
-        roleService.update(bmRole);
+    public JsonResponse updateData(BmRole bmRole,@RequestParam Map<String, Object> map){
+        roleService.update(bmRole,map);
         return ResponseUtil.success();
     }
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
