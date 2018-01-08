@@ -79,6 +79,7 @@
             <label class="layui-form-label">操作组</label>
             <div class="layui-input-inline">
                 <select name="operationGroupId" id="operationGroupId" lay-filter="operationGroupId">
+                    <option >请选择</option>
                 </select>
             </div>
         </div>
@@ -106,8 +107,10 @@
             laytpl = layui.laytpl,
             $ = layui.jquery;
 
+        var opid;
         $.post(Bm["path"] + "/operation/get", {id : "${id}"}, function(ret){
             if(ret.status == "SUCCESS"){
+                opid=ret.result.operationGroupId;
                 var _data = ret.result;
                 var getTpl = tpl.innerHTML,
                     view = document.getElementById('content');
@@ -118,13 +121,18 @@
                 form.render();
             }
         });
-        $.post(Bm["path"] + "/operationGroup/getAll", {id : "111"}, function(ret){
+        $.post(Bm["path"] + "/operationGroup/get-all", {id : "111"}, function(ret){
             if(ret.status == "SUCCESS"){
-               // ; alert(JSON.stringify())
+               //  alert(JSON.stringify(ret.result))
                 for(var i=0;i<ret.result.length;i++){
                     $("#operationGroupId").append('<option value="'+ret.result[i].id+'" id="'+ret.result[i].id+'">'+ret.result[i].name+'</option>')
 
                 }
+                $("#operationGroupId option" ). each( function () {
+                    if($(this).val()==opid){
+                        $(this).attr("selected","selected");
+                    }
+                })
                /* $ ("#operationGroupId option" ). each( function () {
                     alert (1);
                    /if($(this).text()=='数码产品'){

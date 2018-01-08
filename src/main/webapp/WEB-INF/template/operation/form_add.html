@@ -113,7 +113,7 @@
 		 layedit.sync(editIndex);
 		 }
 		 });*/
-        $.post(Bm["path"] + "/operationGroup/getAll", {id : "111"}, function(ret){
+        $.post(Bm["path"] + "/operationGroup/get-all", {id : "111"}, function(ret){
             if(ret.status == "SUCCESS"){
                 // ; alert(JSON.stringify())
                 for(var i=0;i<ret.result.length;i++){
