@@ -21,7 +21,7 @@ import java.util.Map;
  * Created by WJQ on 2018/1/7.
  */
 @Controller
-@RequestMapping("/operationGroup")
+@RequestMapping("/operation-group")
 public class BmOperationGroupController {
 
     @Autowired
